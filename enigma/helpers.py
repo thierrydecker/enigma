@@ -3,8 +3,6 @@
 
 """The helpers module"""
 
-from collections import namedtuple
-
 
 def alphabet():
     """The alphabet
@@ -59,7 +57,12 @@ def a0z25_decode(encoded, codec="utf8"):
     return plain
 
 
-def internals_settings():
+def wheels_wirings():
+    """The wheels wirings
+
+    Returns: The initial wheels wirings known from historical documents
+
+    """
     return {
                "etw": {
                    "in": alphabet(),
