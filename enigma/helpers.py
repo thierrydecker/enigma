@@ -3,6 +3,8 @@
 
 """The helpers module"""
 
+from collections import namedtuple
+
 
 def alphabet():
     """The alphabet
@@ -55,3 +57,60 @@ def a0z25_decode(encoded, codec="utf8"):
         plain.append(num)
     plain = plain.decode(encoding=codec)
     return plain
+
+
+def internals_settings():
+    return {
+               "etw": {
+                   "in": alphabet(),
+                   "out": alphabet(),
+               },
+               "i": {
+                   "in": alphabet(),
+                   "out": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+               },
+               "ii": {
+                   "in": alphabet(),
+                   "out": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+               },
+               "iii": {
+                   "in": alphabet(),
+                   "out": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+               },
+               "iv": {
+                   "in": alphabet(),
+                   "out": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+               },
+               "v": {
+                   "in": alphabet(),
+                   "out": "VZBRGITYUPSDNHLXAWMJQOFECK",
+               },
+               "vi": {
+                   "in": alphabet(),
+                   "out": "JPGVOUMFYQBENHZRDKASXLICTW",
+               },
+               "vii": {
+                   "in": alphabet(),
+                   "out": "NZJHGRCXMYSWBOUFAIVLPEKQDT",
+               },
+               "viii": {
+                   "in": alphabet(),
+                   "out": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
+               },
+               "beta": {
+                   "in": alphabet(),
+                   "out": "LEYJVCNIXWPBQMDRTAKZGFUHOS",
+               },
+               "gamma": {
+                   "in": alphabet(),
+                   "out": "FSOKANUERHMBTIYCWLQPZXVGJD",
+               },
+               "ukw-b": {
+                   "in": alphabet(),
+                   "out": "ENKQAUYWJICOPBLMDXZVFTHRGS",
+               },
+               "ukw-c": {
+                   "in": alphabet(),
+                   "out": "RDOBJNTKVEHMLFCWZAXGYIPSUQ",
+               },
+           },
