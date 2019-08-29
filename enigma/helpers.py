@@ -13,16 +13,17 @@ def alphabet():
     return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
-def a0z25_encode(plain):
+def a0z25_encode(plain, codec="utf8"):
     """A0Z25 encoder
 
     Args:
         plain: String to encode
+        codec: Codec of the string to encode
 
     Returns: Encoded string
 
     """
-    plain = plain.encode()
+    plain = plain.encode(encoding=codec)
     encoded = list()
     for b in plain:
         quotient = b
@@ -35,11 +36,12 @@ def a0z25_encode(plain):
     return encoded
 
 
-def a0z25_decode(encoded):
+def a0z25_decode(encoded, codec="utf8"):
     """A0Z25 decoder
 
     Args:
         encoded: String to decode
+        codec: Codec of the decoded string
 
     Returns: Decoded string
 
@@ -51,5 +53,5 @@ def a0z25_decode(encoded):
         for power, car in enumerate(word):
             num += alphabet().find(car) * (26 ** power)
         plain.append(num)
-    plain = plain.decode()
+    plain = plain.decode(encoding=codec)
     return plain
