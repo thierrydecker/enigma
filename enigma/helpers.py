@@ -67,53 +67,66 @@ def wheels_wirings():
                "etw": {
                    "in": alphabet(),
                    "out": alphabet(),
+                   "turn_over": "",
                },
                "i": {
                    "in": alphabet(),
                    "out": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+                   "turn_over": "Q",
                },
                "ii": {
                    "in": alphabet(),
                    "out": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                   "turn_over": "E",
                },
                "iii": {
                    "in": alphabet(),
                    "out": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+                   "turn_over": "V",
                },
                "iv": {
                    "in": alphabet(),
                    "out": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+                   "turn_over": "J",
                },
                "v": {
                    "in": alphabet(),
                    "out": "VZBRGITYUPSDNHLXAWMJQOFECK",
+                   "turn_over": "Z",
                },
                "vi": {
                    "in": alphabet(),
                    "out": "JPGVOUMFYQBENHZRDKASXLICTW",
+                   "turn_over": "ZM",
                },
                "vii": {
                    "in": alphabet(),
                    "out": "NZJHGRCXMYSWBOUFAIVLPEKQDT",
+                   "turn_over": "ZM",
                },
                "viii": {
                    "in": alphabet(),
                    "out": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
+                   "turn_over": "ZM",
                },
                "beta": {
                    "in": alphabet(),
                    "out": "LEYJVCNIXWPBQMDRTAKZGFUHOS",
+                   "turn_over": "",
                },
                "gamma": {
                    "in": alphabet(),
                    "out": "FSOKANUERHMBTIYCWLQPZXVGJD",
+                   "turn_over": "",
                },
                "ukw-b": {
                    "in": alphabet(),
                    "out": "ENKQAUYWJICOPBLMDXZVFTHRGS",
+                   "turn_over": "",
                },
                "ukw-c": {
                    "in": alphabet(),
                    "out": "RDOBJNTKVEHMLFCWZAXGYIPSUQ",
+                   "turn_over": "",
                },
            },
