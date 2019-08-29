@@ -4,7 +4,7 @@
 """The helpers module"""
 
 
-def alphabet_get():
+def alphabet():
     """The alphabet
 
     Returns: The latin upper alphabet A-Z as a string
@@ -28,7 +28,7 @@ def a0z25_encode(plain):
         quotient = b
         c = ""
         while quotient > 0:
-            c = alphabet_get()[quotient % 26] + c
+            c = alphabet()[quotient % 26] + c
             quotient = int(quotient / 26)
         encoded.append(c)
     encoded = "".join(encoded)
@@ -49,7 +49,7 @@ def a0z25_decode(encoded):
         word = "".join(list(reversed(encoded[i:i + 2])))
         num = 0
         for power, car in enumerate(word):
-            num += alphabet_get().find(car) * (26 ** power)
+            num += alphabet().find(car) * (26 ** power)
         plain.append(num)
     plain = plain.decode()
     return plain
