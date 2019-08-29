@@ -1,3 +1,3 @@
-#ENIGMA Project
+# ENIGMA Project
 
 An Enigma machine implementation
