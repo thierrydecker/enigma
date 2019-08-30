@@ -69,6 +69,9 @@ def wheels_wirings():
                    "out": alphabet(),
                    "turn_over": "",
                },
+               #
+               # Standard wheels
+               #
                "i": {
                    "in": alphabet(),
                    "out": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
@@ -94,6 +97,9 @@ def wheels_wirings():
                    "out": "VZBRGITYUPSDNHLXAWMJQOFECK",
                    "turn_over": "Z",
                },
+               #
+               # Extra wheels VI-VIII
+               #
                "vi": {
                    "in": alphabet(),
                    "out": "JPGVOUMFYQBENHZRDKASXLICTW",
@@ -109,6 +115,10 @@ def wheels_wirings():
                    "out": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
                    "turn_over": "ZM",
                },
+               #
+               # Fourth "thin" wheel also called "greek wheel"
+               # Zusatzwalze Beta (β) and Gamma (γ)
+               #
                "beta": {
                    "in": alphabet(),
                    "out": "LEYJVCNIXWPBQMDRTAKZGFUHOS",
@@ -119,6 +129,9 @@ def wheels_wirings():
                    "out": "FSOKANUERHMBTIYCWLQPZXVGJD",
                    "turn_over": "",
                },
+               #
+               # Reflectors
+               #
                "ukw-b": {
                    "in": alphabet(),
                    "out": "ENKQAUYWJICOPBLMDXZVFTHRGS",
