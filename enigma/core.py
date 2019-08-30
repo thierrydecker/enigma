@@ -2,11 +2,11 @@
 
 """The core module"""
 
+from enigma import helpers
+
 
 def main():
-    """The main function"""
-    pass
+    """The main function
 
-
-if __name__ == "__main":
-    main()
+    """
+    print(helpers.wheels_wirings())
