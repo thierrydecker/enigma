@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""The core module"""
+"""The main module"""
 
 from enigma.core import main
 
