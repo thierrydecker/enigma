@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-"""The main module"""
+"""The main module
+
+"""
 
 #
 # Standard imports

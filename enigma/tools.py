@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-"""The tools module"""
+"""The tools module
+
+"""
 
 
 def alphabet():

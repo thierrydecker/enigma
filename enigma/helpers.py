@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-"""The helpers module"""
+"""The helpers module
+
+"""
 
 import logging
 import logging.config
