@@ -1,145 +1,85 @@
 # -*- coding: utf-8 -*-
 
+"""The main module"""
 
-"""The helpers module"""
+import logging
+import logging.config
+import time
 
-
-def alphabet():
-    """The alphabet
-
-    Returns: The latin upper alphabet A-Z as a string
-
-    """
-    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+logger = logging.getLogger("enigma.helpers")
 
 
-def a0z25_encode(plain, codec="utf8"):
-    """A0Z25 encoder
+def configure_logging(gmt=True):
+    """Configure logging
 
     Args:
-        plain: String to encode
-        codec: Codec of the string to encode
+        gmt: GMT flag for log records timestamps
 
-    Returns: Encoded string
-
-    """
-    plain = plain.encode(encoding=codec)
-    encoded = list()
-    for b in plain:
-        quotient = b
-        c = ""
-        while quotient > 0:
-            c = alphabet()[quotient % 26] + c
-            quotient = int(quotient / 26)
-        encoded.append(c)
-    encoded = "".join(encoded)
-    return encoded
-
-
-def a0z25_decode(encoded, codec="utf8"):
-    """A0Z25 decoder
-
-    Args:
-        encoded: String to decode
-        codec: Codec of the decoded string
-
-    Returns: Decoded string
+    Returns: None
 
     """
-    plain = bytearray()
-    for i in range(0, len(encoded), 2):
-        word = "".join(list(reversed(encoded[i:i + 2])))
-        num = 0
-        for power, car in enumerate(word):
-            num += alphabet().find(car) * (26 ** power)
-        plain.append(num)
-    plain = plain.decode(encoding=codec)
-    return plain
-
-
-def wheels_wirings():
-    """The wheels wirings
-
-    Returns: The initial wheels wirings known from historical documents
-
-    """
-    return {
-               "etw": {
-                   "in": alphabet(),
-                   "out": alphabet(),
-                   "turn_over": "",
-               },
-               #
-               # Standard wheels
-               #
-               "i": {
-                   "in": alphabet(),
-                   "out": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
-                   "turn_over": "Q",
-               },
-               "ii": {
-                   "in": alphabet(),
-                   "out": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
-                   "turn_over": "E",
-               },
-               "iii": {
-                   "in": alphabet(),
-                   "out": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
-                   "turn_over": "V",
-               },
-               "iv": {
-                   "in": alphabet(),
-                   "out": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
-                   "turn_over": "J",
-               },
-               "v": {
-                   "in": alphabet(),
-                   "out": "VZBRGITYUPSDNHLXAWMJQOFECK",
-                   "turn_over": "Z",
-               },
-               #
-               # Extra wheels VI-VIII
-               #
-               "vi": {
-                   "in": alphabet(),
-                   "out": "JPGVOUMFYQBENHZRDKASXLICTW",
-                   "turn_over": "ZM",
-               },
-               "vii": {
-                   "in": alphabet(),
-                   "out": "NZJHGRCXMYSWBOUFAIVLPEKQDT",
-                   "turn_over": "ZM",
-               },
-               "viii": {
-                   "in": alphabet(),
-                   "out": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
-                   "turn_over": "ZM",
-               },
-               #
-               # Fourth "thin" wheel also called "greek wheel"
-               # Zusatzwalze Beta (β) and Gamma (γ)
-               #
-               "beta": {
-                   "in": alphabet(),
-                   "out": "LEYJVCNIXWPBQMDRTAKZGFUHOS",
-                   "turn_over": "",
-               },
-               "gamma": {
-                   "in": alphabet(),
-                   "out": "FSOKANUERHMBTIYCWLQPZXVGJD",
-                   "turn_over": "",
-               },
-               #
-               # Reflectors
-               #
-               "ukw-b": {
-                   "in": alphabet(),
-                   "out": "ENKQAUYWJICOPBLMDXZVFTHRGS",
-                   "turn_over": "",
-               },
-               "ukw-c": {
-                   "in": alphabet(),
-                   "out": "RDOBJNTKVEHMLFCWZAXGYIPSUQ",
-                   "turn_over": "",
-               },
-           },
+    logging.config.dictConfig(
+            {
+                "version": 1,
+                "formatters": {
+                    "detailed": {
+                        "class": "logging.Formatter",
+                        "style": "{",
+                        "format":
+                            "[{asctime}]"
+                            " [{levelname:8s}]"
+                            " [{levelno}]"
+                            " - {message}"
+                            " - {processName}"
+                            " ({process})"
+                            " - {threadName}"
+                            " ({thread})"
+                            " - {name}"
+                            " - {pathname}"
+                            " - {filename}"
+                            " - {module}"
+                            " - {funcName}"
+                            " - {lineno}"
+                    },
+                    "compacted": {
+                        "class": "logging.Formatter",
+                        "style": "{",
+                        "format":
+                            "[{asctime}]"
+                            " [{levelname:8s}]"
+                            " - {message}"
+                    },
+                },
+                "handlers": {
+                    "console": {
+                        "class": "logging.StreamHandler",
+                        "level": "DEBUG",
+                        "formatter": "detailed",
+                    },
+                    "file": {
+                        "class": "logging.FileHandler",
+                        "filename": "logs/enigma.log",
+                        "mode": "w",
+                        "level": "DEBUG",
+                        "formatter": "detailed",
+                    },
+                    "errors": {
+                        "class": "logging.FileHandler",
+                        "filename": "logs/enigma-errors.log",
+                        "mode": "w",
+                        "level": "ERROR",
+                        "formatter": "detailed",
+                    },
+                },
+                "loggers": {
+                    "enigma": {
+                        "level": "DEBUG",
+                        "handlers": ["console", "file"],
+                    }
+                }
+            }
+    )
+    if gmt is True:
+        logging.Formatter.converter = time.gmtime
+        logger.info("Logger timestamps switched to GMT")
+    logger.info("Logger succesfuly configured")
